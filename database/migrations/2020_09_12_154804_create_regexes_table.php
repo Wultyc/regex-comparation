@@ -15,6 +15,7 @@ class CreateRegexesTable extends Migration
     {
         Schema::create('regexes', function (Blueprint $table) {
             $table->id();
+            $table->string('regex');
             $table->timestamps();
         });
     }
