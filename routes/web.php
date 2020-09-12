@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/testRegex', 'MainController@index')->name('teste-homepage');
+Route::post('/testRegex/DB-Select', 'MainController@dbSelect')->name('teste-dbSelect');
+Route::post('/testRegex/DB-Select-With-Limit', 'MainController@dbSelectWithLimit')->name('teste-dbSelectWithLimit');
+Route::post('/testRegex/PHP-Search', 'MainController@phpSearch')->name('teste-phpSearch');
+Route::post('/testRegex/PHP-Search-With-Stop', 'MainController@phpSearchWithStop')->name('teste-phpSearchWithStop');

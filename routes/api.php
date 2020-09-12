@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/testRegex', 'APIController@index')->name('teste-homepage');
+Route::post('/testRegex/DB-Select', 'APIController@dbSelect')->name('teste-dbSelect');
+Route::post('/testRegex/DB-Select-With-Limit', 'APIController@dbSelectWithLimit')->name('teste-dbSelectWithLimit');
+Route::post('/testRegex/PHP-Search', 'APIController@phpSearch')->name('teste-phpSearch');
+Route::post('/testRegex/PHP-Search-With-Stop', 'APIController@phpSearchWithStop')->name('teste-phpSearchWithStop');
