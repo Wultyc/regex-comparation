@@ -21,16 +21,24 @@
 
         <h1>RegEx Comparation</h1>
         <h3 class="mt-5">Insert your string to query</h3>
-        <form class="needs-validation" novalidate="">
+        <form class="needs-validation" novalidate="" method="POST" action="" id="queryForm">
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <input type="text" class="form-control" id="query" placeholder="Your Query" value="" required=""
+                    <input type="text" class="form-control" id="query" name="query" placeholder="Your Query" value="" required=""
                         style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
                 </div>
                 <div class="col-md-6 mb-3">
-                    <button class="btn btn-primary btn-block" type="submit">Search</button>
+                    <select class="form-control" id="test-case" name="test-case" onchange="updTestCase(this.value)" required="">
+                        <option value="" selected>Select one option</option>
+                        <option value="dbSelect">Raw DB select</option>
+                        <option value="dbSelectWithLimit">Raw DB select with limit 1</option>
+                        <option value="phpSearch">Select all and processed by PHP</option>
+                        <option value="phpSearchWithStop">Select all, processed by PHP and stopt after finding the first match</option>
+                    </select>
                 </div>
             </div>
+            
+            <button class="btn btn-primary btn-block" disabled type="submit" id="submit-btn">Search</button>
         </form>
 
         <hr class="mb-4">
@@ -43,6 +51,30 @@
         @endif
 
     <!-- Optional JavaScript -->
+    <script>
+        function updTestCase(select){
+            const form = document.getElementById('queryForm');
+            const submitbtn = document.getElementById('submit-btn');
+
+            let urlMap = new Map();
+
+            urlMap.set("dbSelect", "{{route('web-test-dbSelect')}}");
+            urlMap.set("dbSelectWithLimit", "{{route('web-test-dbSelectWithLimit')}}");
+            urlMap.set("phpSearch", "{{route('web-test-phpSearch')}}");
+            urlMap.set("phpSearchWithStop", "{{route('web-test-phpSearchWithStop')}}");
+
+            console.log(urlMap.get(select));
+
+            if(urlMap.get(select)){
+                form.action = urlMap.get(select);
+                submitbtn.disabled = false;
+            } else {
+                form.action = "";
+                submitbtn.disabled = true;
+            }
+            
+        }
+    </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
