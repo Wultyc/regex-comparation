@@ -14,8 +14,8 @@ use App\Http\Controllers\MainController;
 |
 */
 
-Route::get('/', [MainController::class, 'index'])->name('teste-homepage');
-Route::post('/testRegex/DB-Select', [MainController::class, 'dbSelect'])->name('teste-dbSelect');
-Route::post('/testRegex/DB-Select-With-Limit', [MainController::class, 'dbSelectWithLimit'])->name('teste-dbSelectWithLimit');
-Route::post('/testRegex/PHP-Search', [MainController::class, 'phpSearch'])->name('teste-phpSearch');
-Route::post('/testRegex/PHP-Search-With-Stop', [MainController::class, 'phpSearchWithStop'])->name('teste-phpSearchWithStop');
+Route::get('/', [MainController::class, 'index'])->name('web-test-homepage');
+Route::post('/testRegex/DB-Select', [MainController::class, 'dbSelect'])->name('web-test-dbSelect');
+Route::post('/testRegex/DB-Select-With-Limit', [MainController::class, 'dbSelectWithLimit'])->name('web-test-dbSelectWithLimit');
+Route::post('/testRegex/PHP-Search', [MainController::class, 'phpSearch'])->name('web-test-phpSearch');
+Route::post('/testRegex/PHP-Search-With-Stop', [MainController::class, 'phpSearchWithStop'])->name('web-test-phpSearchWithStop');

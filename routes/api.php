@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/testRegex/DB-Select', [APIController::class,'dbSelect'])->name('teste-dbSelect');
-Route::post('/testRegex/DB-Select-With-Limit', [APIController::class,'dbSelectWithLimit'])->name('teste-dbSelectWithLimit');
-Route::post('/testRegex/PHP-Search', [APIController::class,'phpSearch'])->name('teste-phpSearch');
-Route::post('/testRegex/PHP-Search-With-Stop', [APIController::class,'phpSearchWithStop'])->name('teste-phpSearchWithStop');
+Route::post('/testRegex/DB-Select', [APIController::class,'dbSelect'])->name('api-test-dbSelect');
+Route::post('/testRegex/DB-Select-With-Limit', [APIController::class,'dbSelectWithLimit'])->name('api-test-dbSelectWithLimit');
+Route::post('/testRegex/PHP-Search', [APIController::class,'phpSearch'])->name('api-test-phpSearch');
+Route::post('/testRegex/PHP-Search-With-Stop', [APIController::class,'phpSearchWithStop'])->name('api-test-phpSearchWithStop');
