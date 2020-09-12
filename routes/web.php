@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'MainController@index')->name('teste-homepage');
-Route::post('/testRegex/DB-Select', 'MainController@dbSelect')->name('teste-dbSelect');
-Route::post('/testRegex/DB-Select-With-Limit', 'MainController@dbSelectWithLimit')->name('teste-dbSelectWithLimit');
-Route::post('/testRegex/PHP-Search', 'MainController@phpSearch')->name('teste-phpSearch');
-Route::post('/testRegex/PHP-Search-With-Stop', 'MainController@phpSearchWithStop')->name('teste-phpSearchWithStop');
+Route::get('/', [MainController::class, 'index'])->name('teste-homepage');
+Route::post('/testRegex/DB-Select', [MainController::class, 'dbSelect'])->name('teste-dbSelect');
+Route::post('/testRegex/DB-Select-With-Limit', [MainController::class, 'dbSelectWithLimit'])->name('teste-dbSelectWithLimit');
+Route::post('/testRegex/PHP-Search', [MainController::class, 'phpSearch'])->name('teste-phpSearch');
+Route::post('/testRegex/PHP-Search-With-Stop', [MainController::class, 'phpSearchWithStop'])->name('teste-phpSearchWithStop');

@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\APIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/testRegex/DB-Select', 'APIController@dbSelect')->name('teste-dbSelect');
-Route::post('/testRegex/DB-Select-With-Limit', 'APIController@dbSelectWithLimit')->name('teste-dbSelectWithLimit');
-Route::post('/testRegex/PHP-Search', 'APIController@phpSearch')->name('teste-phpSearch');
-Route::post('/testRegex/PHP-Search-With-Stop', 'APIController@phpSearchWithStop')->name('teste-phpSearchWithStop');
+Route::post('/testRegex/DB-Select', [APIController::class,'dbSelect'])->name('teste-dbSelect');
+Route::post('/testRegex/DB-Select-With-Limit', [APIController::class,'dbSelectWithLimit'])->name('teste-dbSelectWithLimit');
+Route::post('/testRegex/PHP-Search', [APIController::class,'phpSearch'])->name('teste-phpSearch');
+Route::post('/testRegex/PHP-Search-With-Stop', [APIController::class,'phpSearchWithStop'])->name('teste-phpSearchWithStop');
