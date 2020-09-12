@@ -11,7 +11,7 @@ class MainController extends Controller
      */
     public function index(Request $request)
     {
-        # code...
+        return view('welcome');
     }
 
     /**
@@ -19,7 +19,8 @@ class MainController extends Controller
      */
     public function dbSelect(Request $request)
     {
-        # code...
+        $result = "";
+        return view('welcome')->with(compact(['result']));
     }
 
     /**
@@ -27,7 +28,8 @@ class MainController extends Controller
      */
     public function dbSelectWithLimit(Request $request)
     {
-        # code...
+        $result = "";
+        return view('welcome')->with(compact(['result']));
     }
 
     /**
@@ -35,7 +37,8 @@ class MainController extends Controller
      */
     public function phpSearch(Request $request)
     {
-        # code...
+        $result = "";
+        return view('welcome')->with(compact(['result']));
     }
 
     /**
@@ -43,6 +46,7 @@ class MainController extends Controller
      */
     public function phpSearchWithStop(Request $request)
     {
-        # code...
+        $result = "";
+        return view('welcome')->with(compact(['result']));
     }
 }
