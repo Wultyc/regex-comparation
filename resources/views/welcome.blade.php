@@ -22,6 +22,7 @@
         <h1>RegEx Comparation</h1>
         <h3 class="mt-5">Insert your string to query</h3>
         <form class="needs-validation" novalidate="" method="POST" action="" id="queryForm">
+            @csrf
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <input type="text" class="form-control" id="query" name="query" placeholder="Your Query" value="" required=""
