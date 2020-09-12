@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class regex extends Model
 {
@@ -23,7 +24,7 @@ class regex extends Model
      */
     public function selectAllWithWhere(string $target = null)
     {
-        # code...
+        return DB::select('SELECT * FROM regexes WHERE ? RLIKE regex', [$target]);
     }
 
     /**
@@ -31,7 +32,7 @@ class regex extends Model
      */
     public function selectAllWithWhereAndLimit1(string $target = null)
     {
-        # code...
+        return DB::select('SELECT * FROM regexes WHERE ? RLIKE regex LIMIT 1', [$target]);
     }
 
     /**
@@ -39,7 +40,14 @@ class regex extends Model
      */
     public function selectAllAndProcessLocally(string $target = null)
     {
-        # code...
+        $result = "";
+        $records = $this->get();
+
+        foreach($records as $record){
+            $result = preg_match($record->regex, $target) ? $record->regex : $result;
+        }
+
+        return $result;
     }
 
     /**
@@ -47,6 +55,13 @@ class regex extends Model
      */
     public function selectAllAndProcessLocallyAndStopAfterFinding(string $target = null)
     {
-        # code...
+        $records = $this->get();
+
+        foreach($records as $record){
+           if(preg_match($record->regex, $target))
+            return $record->regex;
+        }
+
+        return "";
     }
 }
